@@ -1,3 +1,0 @@
-# General dependencies
-flask==2.2.5 
-pytest
