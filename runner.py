@@ -1,5 +1,7 @@
-from math_logic import sum
+from math_logic import sum ,  multiply, divide, find_max, find_min
 
 def main():
-    sum = sum(1, 2)
-    print(sum)
+    ans = multiply(1, 2)
+    print(ans)
+
+main()
