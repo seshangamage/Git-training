@@ -1,5 +1,5 @@
-from math_logic import add
+from math_logic import sum
 
 def main():
-    sum = add(1, 2)
+    sum = sum(1, 2)
     print(sum)
