@@ -10,5 +10,14 @@ def divide(a,b):
     divide = a/b
     return divide
 
-sum = sum(1,2)
-print(sum)
+def find_max(a,b):
+    if a>b:
+        return a
+    else:
+        return b
+    
+def find_min(a,b):
+    if a<b:
+        return a
+    else:
+        return b
