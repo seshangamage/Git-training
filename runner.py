@@ -9,5 +9,6 @@ def main():
     print(ans3)
     ans4 = find_min(4,5)
     print(ans4)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~")
 
 main()
