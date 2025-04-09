@@ -1,1 +1,1 @@
-python runner.py
+python3 runner.py
