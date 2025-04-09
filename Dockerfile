@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the app (adjust to your app's entry point)
-CMD ["python", "app.py"]
+CMD ["python3", "runner.py"]
