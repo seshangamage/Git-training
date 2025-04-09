@@ -43,16 +43,32 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-    - name: Deploy to EC2
+    - name: Deploy to EC2 with Docker
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          # Ensure the repo is cloned first if it's not already present
+          # Ensure Docker is installed
+          if ! command -v docker &> /dev/null; then
+            echo "Docker not found. Installing..."
+            sudo yum update -y
+            sudo amazon-linux-extras install docker -y
+            sudo service docker start
+            sudo usermod -a -G docker ec2-user
+            newgrp docker
+          fi
+    
+          # Clone or update repo
           if [ ! -d "/home/ec2-user/Git-training/.git" ]; then
             echo "Cloning the repository..."
-            git clone https://github.com/seshangamage/Git-training.git 
+            git clone https://github.com/seshangamage/Git-training.git
           fi
+    
           cd /home/ec2-user/Git-training
           git pull origin main
-          chmod +x deploy.sh
-          ./deploy.sh
+    
+          # Build and run Docker container
+          docker stop python-app || true
+          docker rm python-app || true
+    
+          docker build -t python-app .
+          docker run -d --name python-app -p 8000:8000 python-app
         EOF
