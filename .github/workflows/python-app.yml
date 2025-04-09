@@ -53,5 +53,6 @@ jobs:
           fi
           cd /home/ec2-user/Git-training
           git pull origin main
+          chmod +x deploy.sh
           ./deploy.sh
         EOF
