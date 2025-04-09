@@ -68,5 +68,5 @@ jobs:
           sudo docker rm python-app || true
 
           sudo docker build -t python-app .
-          sudo docker run -d --name python-app -p 8000:8000 python-app
+          sudo docker run -d --name python-app -p 80:8000 python-app
         EOF
