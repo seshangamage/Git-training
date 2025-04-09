@@ -47,9 +47,9 @@ jobs:
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
           # Ensure the repo is cloned first if it's not already present
-          if [ ! -d "/home/ec2-user/your-repo/.git" ]; then
+          if [ ! -d "/home/ec2-user/Git-training/.git" ]; then
             echo "Cloning the repository..."
-            git clone https://github.com/seshangamage/Git-training.git /home/ec2-user/Git-training
+            git clone https://github.com/seshangamage/Git-training.git 
           fi
           cd /home/ec2-user/Git-training
           git pull origin main
