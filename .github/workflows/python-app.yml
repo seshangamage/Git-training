@@ -49,9 +49,9 @@ jobs:
           # Ensure the repo is cloned first if it's not already present
           if [ ! -d "/home/ec2-user/your-repo/.git" ]; then
             echo "Cloning the repository..."
-            git clone https://github.com/your-org/your-repo.git /home/ec2-user/your-repo
+            git clone https://github.com/seshangamage/Git-training.git /home/ec2-user/Git-training
           fi
-          cd /home/ec2-user/your-repo
+          cd /home/ec2-user/Git-training
           git pull origin main
           ./deploy.sh
         EOF
